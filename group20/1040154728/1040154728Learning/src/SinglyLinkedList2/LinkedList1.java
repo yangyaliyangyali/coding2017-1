@@ -234,5 +234,9 @@ public class LinkedList1 {
         testList.add(4,"Peach");
         System.out.println("The list has : ");
         System.out.println(testList);
+        testList.remove("Cherry");
+        testList.remove(2);
+        System.out.println("The list has : ");
+        System.out.println(testList);
     }
 }
