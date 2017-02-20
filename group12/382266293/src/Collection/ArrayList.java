@@ -3,14 +3,12 @@ package Collection;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class ArrayList<E> implements List<E> {
+public class ArrayList<E> extends AbstractList<E> {
 
 	private E[] elements;
 	private int size;
 	private static final int INITIAL_SIZE = 16;
-	private static final String PREFIX = "[";
-	private static final String SUFFIX = "]";
-	private static final String SEPERATOR = ",";
+
 
 	public ArrayList() {
 		elements = (E[]) new Object[INITIAL_SIZE];
@@ -56,13 +54,6 @@ public class ArrayList<E> implements List<E> {
 	}
 	
 	@Override
-	public boolean isEmpty() {
-		if (size == 0)
-			return true;
-		return false;
-	}
-	
-	@Override
 	public E remove(int index) {
 		checkIndex(index);
 		if (index == size) {
@@ -82,23 +73,6 @@ public class ArrayList<E> implements List<E> {
 		return size;
 	}
 	
-	private void checkIndex(int i) {
-		if(i<0 || i>size-1)
-			throw new IndexOutOfBoundsException();
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(PREFIX);
-		for (int i = 0; i < size; i++) {
-			sb.append(elements[i]);
-			if (i < size-1)
-				sb.append(SEPERATOR);
-		}
-		sb.append(SUFFIX);
-		return sb.toString();
-	}
 
 	@Override
 	public int hashCode() {
@@ -124,7 +98,6 @@ public class ArrayList<E> implements List<E> {
 			return false;
 		return true;
 	}
-	
 
 	public Iterator<E> iterator(){
 		return new ArrayListIterator<E>(this);
@@ -142,9 +115,7 @@ public class ArrayList<E> implements List<E> {
 
 		@Override
 		public boolean hasNext() {
-			if (pos < size)
-				return true;
-			return false;
+			return pos < size;
 		}
 
 		@Override

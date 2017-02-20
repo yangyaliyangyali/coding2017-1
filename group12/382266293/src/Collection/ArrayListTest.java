@@ -1,10 +1,12 @@
 package Collection;
 
 import static util.Print.*;
+import java.util.Date;
 import java.util.NoSuchElementException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 
 import junit.framework.TestCase;
 
@@ -25,7 +27,11 @@ public class ArrayListTest extends TestCase {
 
 	@Test
 	public void testArrayList() {
-
+		List bt = new ArrayList();
+		assertEquals(bt.size(), 0);
+		bt.add(new Date());
+		assertEquals(1, bt.size());
+		
 	}
 
 	@Test
@@ -107,9 +113,12 @@ public class ArrayListTest extends TestCase {
 			myAL.add(i);
 		}
 		Iterator<Integer> it = myAL.iterator();
-		while(it.hasNext()) {
-			it.next();
+		println(myAL);
+		for(int i = 0; it.hasNext(); i++){
+			int res = it.next();
+			assertEquals(i,res);
 		}
+		
 	    try {
 			it.next();
 	    } catch (NoSuchElementException ex) {

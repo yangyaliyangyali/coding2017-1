@@ -14,12 +14,8 @@ public interface List<E> {
 	
 	public boolean isEmpty();
 	
+	public Iterator<E> iterator();
 	
-	
-	
-	
-	
-	
-	
+
 	
 }
