@@ -1,5 +1,7 @@
 package Collection;
 
+import static util.Print.println;
+
 import java.util.NoSuchElementException;
 
 
@@ -12,55 +14,72 @@ public class LinkedList<E> extends AbstractList<E> {
 		this.head = new Node<E>(null);
 		this.size = 0;
 	}
-
 	
 	@Override
 	public void add(E e) {
-		checkCapacity();	
-		if (size == 0) {
-			head = new Node<E>(e);
-			size++;
-			return;
-		}
-		Node res = new Node<E>(e);
-		setLast(res);
-		size++;
-		return;
+		addLast(e);
 	}
 	
 	
 	@Override
 	public E get(int index) {
+		checkIndex(index);
 		return getNode(index).data;
 	}
 	
 	
-	@Override
-	public void add(int index, E e) {
-		checkCapacity();
+	public void add(int index, E e) {		
 		if (index == size) {
-			add(e);
+			addLast(e);
 			return;
-		}
+		} 
 		
-		Node<E> pNode = new Node<E>(e);
 		if (index == 0) {
-			Node hNext = head.next;
-			head = pNode;
-			pNode.next = hNext;
-			size++;
+			addFirst(e);
 			return;
 		}
 		
 		checkIndex(index);
+		Node<E> pNode = new Node<E>(e);
+		Node<E> p = getNode(index);
 		synchronized (this) {
 			getNode(index-1).next = pNode;
-			pNode.next = getNode(index);
+			pNode.next = p;
 			size++;
 		}
 	}
 
-	@Override
+	public void addFirst(E e){
+		checkCapacity();
+		Node<E> pNode = new Node<E>(e);
+		Node oldHead = head;
+		head = pNode;
+		pNode.next = oldHead;
+		size++;
+		return;
+	}
+	
+	public void addLast(E e){
+		if (size == 0) {
+			addFirst(e);
+			return;
+		}
+		
+		checkCapacity();
+		Node res = new Node<E>(e);
+		setLastNode(res);
+		size++;
+		return;
+	}
+	
+	public E removeFirst(){
+		return remove(0);
+	}
+	public E removeLast(){
+		return remove(size-1);
+	}
+
+
 	public E remove(int index) {
 		checkIndex(index);
 		Node<E> pNode = getNode(index);
@@ -89,8 +108,7 @@ public class LinkedList<E> extends AbstractList<E> {
 			throw new IndexOutOfBoundsException("Reached max capacity: "+ MAX_SIZE);
 	}	
 
-	public Node<E> getNode(int index) {
-		checkIndex(index);
+	private Node<E> getNode(int index) {
 		if (size == 0)
 			return head;
 	
@@ -101,7 +119,7 @@ public class LinkedList<E> extends AbstractList<E> {
 		return pNode;
 	}
 	
-	private void setLast(Node res) {
+	private void setLastNode(Node res) {
 		getNode(size-1).next = res;
 	}
 
@@ -167,6 +185,20 @@ public class LinkedList<E> extends AbstractList<E> {
 				return (E) get(pos++);
 			throw new NoSuchElementException();
 		}
+	}
+	
+	public static void main(String args[]) {
+		
+		LinkedList<String> myLL = new LinkedList<String>(); 
+		String a;
+		for (int i = 0 ; i < 20; i++) {
+			a = "" + i;
+			myLL.add(a);
+		}
+		
+		String ss = "bba";
+		myLL.addFirst(ss);
+		println(myLL);
 	}
 
 }

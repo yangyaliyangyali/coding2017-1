@@ -1,4 +1,4 @@
-package Collection;
+package TestCollection;
 
 import static util.Print.*;
 import java.util.Date;
@@ -7,7 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
+import Collection.ArrayList;
+import Collection.Iterator;
+import Collection.List;
 import junit.framework.TestCase;
 
 public class ArrayListTest extends TestCase {
@@ -47,8 +49,10 @@ public class ArrayListTest extends TestCase {
 		myAL.add(5);
 		myAL.add(5);
 		myAL.add(1,10);
+		
 		int c = myAL.get(1);
 		assertEquals(10,c);
+		
 		assertEquals(4,myAL.size());
 		myAL.add(4,15);
 		int a = myAL.get(0);

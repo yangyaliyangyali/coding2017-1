@@ -32,7 +32,6 @@ public class ArrayList<E> extends AbstractList<E> {
 		elements = target;
 	}
 	
-	@Override
 	public void add(int index, E e) {
 		checkCapacity();
 		if (index == size) {
@@ -53,11 +52,18 @@ public class ArrayList<E> extends AbstractList<E> {
 			return elements[index];
 	}
 	
-	@Override
+	public void addLast(E e) {
+		add(e);	
+	}
+	
+	public E removeLast() {
+		return elements[--size];
+	}
+	
 	public E remove(int index) {
 		checkIndex(index);
-		if (index == size) {
-			return elements[size--];
+		if (index == size-1) {
+			return removeLast();
 		}
 		
 		E result = elements[index];
@@ -125,5 +131,6 @@ public class ArrayList<E> extends AbstractList<E> {
 			throw new NoSuchElementException();
 		}
 	}
-	
+
+
 }
