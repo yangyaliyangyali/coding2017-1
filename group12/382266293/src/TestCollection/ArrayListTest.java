@@ -7,9 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import Collection.ArrayList;
 import Collection.Iterator;
 import Collection.List;
+import Collection.Concrete.ArrayList;
 import junit.framework.TestCase;
 
 public class ArrayListTest extends TestCase {

@@ -1,7 +1,10 @@
-package Collection;
+package Collection.Concrete;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+
+import Collection.AbstractList;
+import Collection.Iterator;
 
 public class ArrayList<E> extends AbstractList<E> {
 

@@ -1,5 +1,6 @@
-package Collection;
+package Collection.Concrete;
 
+import Collection.AbstractList;
 
 public class Stack<E> extends AbstractList<E> {
 	

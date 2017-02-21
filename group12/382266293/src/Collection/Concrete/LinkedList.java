@@ -1,8 +1,11 @@
-package Collection;
+package Collection.Concrete;
 
 import static util.Print.println;
 
 import java.util.NoSuchElementException;
+
+import Collection.AbstractList;
+import Collection.Iterator;
 
 
 public class LinkedList<E> extends AbstractList<E> {

@@ -4,7 +4,7 @@ import static util.Print.*;
 
 import javax.print.attribute.standard.PrinterLocation;
 
-import Collection.Stack;
+import Collection.Concrete.Stack;
 import util.Print;
 
 public class test {
