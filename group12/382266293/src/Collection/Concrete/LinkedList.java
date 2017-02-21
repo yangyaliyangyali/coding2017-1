@@ -30,6 +30,14 @@ public class LinkedList<E> extends AbstractList<E> {
 		return getNode(index).data;
 	}
 	
+	public E getFirst() {
+		return get(0);
+	}
+	
+	public E getLast() {
+		return get(size-1);
+	}
+	
 	
 	public void add(int index, E e) {		
 		if (index == size) {
@@ -81,7 +89,6 @@ public class LinkedList<E> extends AbstractList<E> {
 	public E removeLast(){
 		return remove(size-1);
 	}
-
 
 	public E remove(int index) {
 		checkIndex(index);
@@ -203,5 +210,9 @@ public class LinkedList<E> extends AbstractList<E> {
 		myLL.addFirst(ss);
 		println(myLL);
 	}
+
+
+
+
 
 }

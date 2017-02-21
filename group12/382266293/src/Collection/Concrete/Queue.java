@@ -1,39 +1,39 @@
 package Collection.Concrete;
-
 import Collection.AbstractList;
 
-public class Stack<E> extends AbstractList<E> {
+public class Queue<E> extends AbstractList<E> {
 	
-	private ArrayList<E> myList;
+	private LinkedList<E> myList;
 
-	public Stack() {
-		this.myList = new ArrayList<E>();
+	public Queue() {
+		this.myList = new LinkedList<E>();
 	}
-
-	public void push(E e){
+	
+	public void enQueue(E e){
 		myList.addLast(e);
 	}
 	
-	public E pop(){
-		return myList.removeLast();
+	public E deQueue(){
+		return myList.removeFirst();
 	}
 	
-	public E peek(){
-		return myList.getLast();
-	}
-
-	public int size(){
-		return myList.size();
-	}
-
 	@Override
 	public void add(E e) {
-		push(e);
+		enQueue(e);
 	}
-
+	
 	@Override
 	public E get(int index) {
 		return myList.get(index);
+	}
+	
+	public E element() {
+		return myList.getFirst();
+	}
+
+	@Override
+	public int size() {
+		return myList.size();
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class Stack<E> extends AbstractList<E> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Stack other = (Stack) obj;
+		Queue other = (Queue) obj;
 		if (myList == null) {
 			if (other.myList != null)
 				return false;
@@ -60,5 +60,8 @@ public class Stack<E> extends AbstractList<E> {
 			return false;
 		return true;
 	}
+
+
 	
+
 }
