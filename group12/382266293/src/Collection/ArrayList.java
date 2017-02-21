@@ -52,6 +52,10 @@ public class ArrayList<E> extends AbstractList<E> {
 			return elements[index];
 	}
 	
+	public E getLast() {
+		return get(size-1);
+	}
+	
 	public void addLast(E e) {
 		add(e);	
 	}
@@ -131,6 +135,8 @@ public class ArrayList<E> extends AbstractList<E> {
 			throw new NoSuchElementException();
 		}
 	}
+
+
 
 
 }

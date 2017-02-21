@@ -18,7 +18,7 @@ public class Stack<E> extends AbstractList<E> {
 	}
 	
 	public E peek(){
-		return myArr.get(size()-1);
+		return myArr.getLast();
 	}
 
 	public int size(){
