@@ -10,7 +10,7 @@ public class Stack<E> extends AbstractList<E> {
 	}
 
 	public void push(E e){
-		myArr.add(e);
+		myArr.addLast(e);
 	}
 	
 	public E pop(){
