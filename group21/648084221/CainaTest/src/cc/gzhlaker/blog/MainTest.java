@@ -11,3 +11,13 @@ public class MainTest {
 	}
 
 }
+
+class MyData{
+	
+	int number;
+	
+	public MyData(){
+		number = 0;
+	}
+}
+
