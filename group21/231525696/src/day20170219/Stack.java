@@ -9,23 +9,30 @@ public class Stack {
 	
 	private ArrayList elementData = new ArrayList();
 	
-	public void push(Object o){
-		
+	private int currentIndex = 0;
+	
+	
+	public Object push(Object o){
+		elementData.add(o);
+		currentIndex ++;
+		return o;
 	}
 	
 	public Object pop(){
-		return null;
+		Object ob = peek();
+		elementData.remove(currentIndex-1);
+		return ob;
 	}
 	
 	public Object peek(){
-		return null;
+		return elementData.get(currentIndex-1);
 	}
 	
 	public boolean isEmpty(){
-		return false;
+		return currentIndex == 0 ;
 	}
 	
 	public int size(){
-		return -1;
+		return elementData.size();
 	}
 }

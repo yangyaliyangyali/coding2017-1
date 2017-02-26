@@ -3,6 +3,9 @@ package day20170219;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
+import java.util.Queue;
+
 public class JavaTest {
 	public static void main(String[] args) {
 		int[] a = new int[10];
@@ -19,6 +22,8 @@ public class JavaTest {
 		
 		//return Arrays.copyOf(src, src.length + size);
 		List list = new LinkedList();
+		Stack stack = new Stack();
+		LinkedList ls = new LinkedList();
 		int[] target = new int[src.length + size];
 		System.arraycopy(src, 0, target, 0, src.length);
 		

@@ -10,19 +10,19 @@ public class Queue {
 	private LinkedList elementData;
 	
 	public void enQueue(Object o){
-		
+		elementData.add(o);
 	}
 	
 	public Object deQueue(){
-		return null;
+		return elementData.removeLast();
 	}
 	
 	public boolean isEmpty(){
-		return false;
+		return elementData.size() == 0;
 	}
 	
 	public int size(){
-		return -1;
+		return elementData.size();
 	}
 	
 }
