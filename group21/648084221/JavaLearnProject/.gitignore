@@ -9,7 +9,7 @@
 *.iml
 rebel.xml
 rebel-remote.xml
-.recommenders
+
 .classpath
 .project
 .setting
