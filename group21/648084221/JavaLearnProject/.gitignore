@@ -9,10 +9,10 @@
 *.iml
 rebel.xml
 rebel-remote.xml
-
+.recommenders
 .classpath
 .project
-.settings
+.setting
 .metadata
 
 target
