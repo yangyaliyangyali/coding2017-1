@@ -1,5 +1,9 @@
+
 package Collection.Concrete;
+import java.util.NoSuchElementException;
+
 import Collection.AbstractList;
+import Collection.Iterator;
 
 public class Queue<E> extends AbstractList<E> {
 	
@@ -14,9 +18,11 @@ public class Queue<E> extends AbstractList<E> {
 	}
 	
 	public E deQueue(){
+		if (0 == size())
+			return null;
 		return myList.removeFirst();
 	}
-	
+
 	@Override
 	public void add(E e) {
 		enQueue(e);
@@ -24,16 +30,26 @@ public class Queue<E> extends AbstractList<E> {
 	
 	@Override
 	public E get(int index) {
+		if (0 == size())
+			return null;
 		return myList.get(index);
 	}
 	
 	public E element() {
+		if (0 == size())
+			return null;
 		return myList.getFirst();
 	}
+
 
 	@Override
 	public int size() {
 		return myList.size();
+	}
+	
+	@Override
+	protected Iterator<E> iterator() {
+		return myList.iterator();
 	}
 
 	@Override
@@ -60,6 +76,8 @@ public class Queue<E> extends AbstractList<E> {
 			return false;
 		return true;
 	}
+
+
 
 
 	

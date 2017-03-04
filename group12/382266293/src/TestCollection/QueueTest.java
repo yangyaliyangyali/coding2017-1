@@ -1,17 +1,17 @@
+
 package TestCollection;
 
 import static util.Print.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
+import static util.TestUtil.*;
 import Collection.Concrete.Queue;
 import junit.framework.TestCase;
 
 public class QueueTest extends TestCase {
 
-	Queue<Integer> myQueue;
+	private Queue<Integer> myQueue;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -25,23 +25,21 @@ public class QueueTest extends TestCase {
 
 	@Test
 	public void testIsEmpty() {
-		assertEquals(0, myQueue.size());
+		assertEquals(true, myQueue.isEmpty());
+		myQueue.enQueue(getRandomNumber());
+		assertEquals(false, myQueue.isEmpty());
 	}
 
 	@Test
 	public void testEnQueue() {
-		for (int i = 0; i < 10; i++) {
-			assertEquals(i, myQueue.size());
-			myQueue.enQueue(i);
-			int expected = i;
-			int actual = myQueue.get(i);
-			assertEquals(expected, actual);
-		}
+
+		enQueueIntWithNatureOrder(myQueue, getRandomNumber());
+		
 	}
 
 	@Test
 	public void testDeQueue() {
-		testEnQueue();
+		enQueueIntWithNatureOrder(myQueue, getRandomNumber());
 		int size = myQueue.size();
 		for (int i = 0; i < size ; i++) {
 			assertEquals(size-i, myQueue.size());
@@ -49,6 +47,11 @@ public class QueueTest extends TestCase {
 			int actual = myQueue.deQueue();
 			assertEquals(expect, actual);
 		}
+		
+		assertEquals(null, myQueue.deQueue());
+		assertEquals(null, myQueue.element());
+		assertEquals(null, myQueue.get(0));
+
 	}
 
 	@Test

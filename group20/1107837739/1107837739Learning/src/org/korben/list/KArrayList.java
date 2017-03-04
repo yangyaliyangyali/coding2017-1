@@ -130,6 +130,12 @@ public class KArrayList<T> implements KList<T> {
         return -1;
     }
 
+
+    @Override
+    public KIterator<T> iterator() {
+        return new ArrayListIterator(this);
+    }
+
     private void ensureCapacity(int minCapacity) {
         if (minCapacity > dataArray.length) {
             int newCapacity = Math.max(minCapacity, dataArray.length * 2);
@@ -139,4 +145,27 @@ public class KArrayList<T> implements KList<T> {
             dataArray = newDataArray;
         }
     }
+
+    private class ArrayListIterator implements KIterator<T> {
+        private int position;
+        private KArrayList<T> list;
+
+        ArrayListIterator(KArrayList<T> list) {
+            this.list = list;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return position < list.size();
+        }
+
+        @Override
+        public T next() {
+            if (hasNext()) {
+                return list.get(position++);
+            }
+            return null;
+        }
+    }
+>>>>>>> master
 }

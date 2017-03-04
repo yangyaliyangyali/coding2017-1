@@ -30,4 +30,7 @@ public interface KList<T> {
     T remove(int index);
 
     int indexOf(T o);
+
+    KIterator<T> iterator();
+
 }
