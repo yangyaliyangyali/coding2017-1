@@ -1,6 +1,11 @@
+
 package Collection.Concrete;
 
+import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
+
 import Collection.AbstractList;
+import Collection.Iterator;
 
 public class Stack<E> extends AbstractList<E> {
 	
@@ -15,10 +20,17 @@ public class Stack<E> extends AbstractList<E> {
 	}
 	
 	public E pop(){
+		checkEmpty();
 		return myList.removeLast();
 	}
 	
+	private void checkEmpty() {
+		if (0 == size())
+			throw new EmptyStackException();
+	}
+
 	public E peek(){
+		checkEmpty();
 		return myList.getLast();
 	}
 
@@ -33,7 +45,13 @@ public class Stack<E> extends AbstractList<E> {
 
 	@Override
 	public E get(int index) {
-		return myList.get(index);
+		checkEmpty();
+		return myList.get(size() - index - 1);
+	}
+	
+	@Override
+	protected Iterator<E> iterator() {
+		return new StackIterator(myList);
 	}
 
 	@Override
@@ -60,5 +78,30 @@ public class Stack<E> extends AbstractList<E> {
 			return false;
 		return true;
 	}
+	
+	private class StackIterator<E> implements Iterator<E> {
+
+		private ArrayList<E> myArrayList;
+		private int pos;
+		
+		public StackIterator(ArrayList<E> myList) {
+			myArrayList = myList;
+			pos = 0;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return pos < size();
+		}
+
+		@Override
+		public E next() {
+			if (hasNext())
+				return (E) get(pos);
+			throw new NoSuchElementException();
+		}
+	}
+
+	
 	
 }

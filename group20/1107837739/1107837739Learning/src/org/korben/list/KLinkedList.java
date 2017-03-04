@@ -143,6 +143,11 @@ public class KLinkedList<T> implements KList<T> {
         return -1;
     }
 
+    @Override
+    public KIterator<T> iterator() {
+        throw new IllegalStateException("方法未实现");
+    }
+
     private Node<T> getNode(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();

@@ -1,22 +1,19 @@
+
 package TestCollection;
 
 import static util.Print.*;
+import static util.TestUtil.*; 
 import java.util.Date;
 import java.util.NoSuchElementException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sun.jndi.url.iiopname.iiopnameURLContextFactory;
-import com.sun.org.apache.regexp.internal.recompile;
-import com.sun.swing.internal.plaf.basic.resources.basic;
-
 import Collection.Iterator;
 import Collection.List;
-import Collection.Concrete.ArrayList;
 import Collection.Concrete.LinkedList;
 import junit.framework.TestCase;
-import sun.awt.ModalityListener;
+
 
 public class LinkedListTest extends TestCase {
 
@@ -25,7 +22,7 @@ public class LinkedListTest extends TestCase {
 	@Before
 	public void setUp() throws Exception {
 		myLL = new LinkedList<String>();
-		assertEquals(true,myLL.isEmpty());
+		assertEquals(0,myLL.size());
 	}
 
 	@After
@@ -35,10 +32,10 @@ public class LinkedListTest extends TestCase {
 
 	@Test
 	public void testLinkedList() {
-		List bt = new LinkedList();
-		assertEquals(bt.size(), 0);
-		bt.add(new Date());
-		assertEquals(1, bt.size());
+		List rawList = new LinkedList();
+		assertEquals(rawList.size(), 0);
+		rawList.add(new Date());
+		assertEquals(1, rawList.size());
 		
 	}
 
@@ -52,15 +49,14 @@ public class LinkedListTest extends TestCase {
 	@Test
 	public void testAddStringE() {
 		String a;
-		for (int i = 0 ; i < 30; i++) {
-			a = "" + i;
-			myLL.add(a);
-			assertEquals(myLL.get(i),a);
-		}
-		for (int i = 0 ; i < 30; i++) {
-			a = "" + i;
-			assertEquals(myLL.get(i),a);
-		}
+		
+		addString(myLL,30);
+		println(myLL.get(0));
+
+//		for (int i = 0 ; i < 29; i++) {
+//			a = "" + i;
+//			assertEquals(myLL.get(i),a);
+//		}
 	}
 	
 	@Test

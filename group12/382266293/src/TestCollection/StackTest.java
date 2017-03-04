@@ -1,6 +1,10 @@
+
 package TestCollection;
 
 import static util.Print.*;
+
+import java.util.EmptyStackException;
+import static util.TestUtil.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +28,9 @@ public class StackTest extends TestCase {
 
 	@Test
 	public void testIsEmpty() {
-		assertEquals(0, myStack.size());
+		assertEquals(true, myStack.isEmpty());
+		myStack.push(getRandomNumber());
+		assertEquals(false, myStack.isEmpty());
 	}
 
 	@Test
@@ -45,6 +51,13 @@ public class StackTest extends TestCase {
 			assertEquals(i, myStack.size());
 			int actual = myStack.pop();
 			assertEquals(expect, actual);
+		}
+		
+		try {
+			myStack.pop();
+			fail("no exception throw");
+		} catch (Exception e) {
+			assertEquals(EmptyStackException.class, e.getClass());
 		}
 	}
 
@@ -69,6 +82,18 @@ public class StackTest extends TestCase {
 		}
 		
 	}
+	
+	
+	public void testGet() {
+		
+		try {
+			myStack.get(getRandomNumber());
+			fail("no exception throw");
+		} catch (Exception e) {
+			assertEquals(EmptyStackException.class, e.getClass());
+		}
+		
+	}
 
 	@Test
 	public void testSize() {
@@ -80,12 +105,13 @@ public class StackTest extends TestCase {
 
 	@Test
 	public void testAdd() {
-		for (int i = 0; i < 10; i++) {
-			myStack.add(i);
-			Integer actual = new Integer(myStack.get(i));
-			Integer expected = new Integer(i);
-			assertEquals(expected, actual);
-		}
+		myStack.push(5);
+		myStack.push(10);
+		myStack.push(15);
+		println(myStack.get(0));
+		println(myStack.get(1));
+		println(myStack.get(2));
+		
 	}
 
 	@Test
